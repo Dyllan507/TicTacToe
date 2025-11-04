@@ -23,12 +23,6 @@ def drawCondition(gameboard):
     return drawCheck
 
 
-
-
-
-
-
-
 def winConditionO(gameboard):
     #vertical check for o
     winCheck_o = False
@@ -52,7 +46,6 @@ def winConditionO(gameboard):
         winCheck_o = True
 
     return winCheck_o
-
 
 
 def winConditionX(gameboard):
@@ -82,11 +75,49 @@ def winConditionX(gameboard):
 
 
 def determineComputerMove(gameboard):
-    move1 = False
-    move2 = False
     move3 = False
-    
-
+    if gameboard[0][0] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.randint(2,9)
+            return move1
+    if gameboard[0][1] == 'x':
+        if gameboard[0][0] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,3,4,5,6,7,8,9)
+            return move1
+    if gameboard[0][2] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][0] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,2,4,5,6,7,8,9)
+            return move1
+    if gameboard[1][0] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[0][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,3,2,5,6,7,8,9)
+            return move1
+    if gameboard[1][1] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[0][0] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,3,4,2,6,7,8,9)       
+            return move1
+    if gameboard[1][2] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[0][0] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,3,4,5,2,7,8,9)
+            return move1
+    if gameboard[2][0] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[0][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,3,4,5,6,2,8,9)
+            return move1
+    if gameboard[2][1] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[0][0] != 'x' or gameboard[2][2] != 'x':
+            move1 = random.choice(1,3,4,5,6,7,2,9)
+            return move1
+    if gameboard[2][2] == 'x':
+        if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[0][0] != 'x':
+            move1 = random.choice(1,3,4,5,6,7,8,2)
+            return move1
+    #checking for win conditions
+    for i in range[len(gameboard)]:
+        if gameboard[i][0] == 'x' and gameboard[i][1] == 'x':
+            move2 = gameboard[i][2]
+        if gameboard[i][1] == 'x' and gameboard[i][2] == 'x':
+            move2 = gameboard[i][0]
 
 
 def main():

@@ -2,14 +2,22 @@
 
 #Making a tictactoe game through lists in python
 
+import random
+
 
 def drawCondition(gameboard):
     drawCheck = False
-    for i in range(len(gameboard)):
-        for j in range(len(gameboard)):
-            if gameboard[i][j] == 'o' or gameboard[i][j] == 'x':
-                if i == 2 and j == 2: 
-                    drawCheck = True
+    if gameboard[0][0] == 'x' or gameboard[0][0] == 'o':
+        if gameboard[0][1] == 'x' or gameboard[0][1] == 'o':
+            if gameboard[0][2] == 'x' or gameboard[0][2] == 'o':
+                if gameboard[1][0] == 'x' or gameboard[1][0] == 'o':
+                    if gameboard[1][1] == 'x' or gameboard[1][1] == 'o':
+                        if gameboard[1][2] == 'x' or gameboard[1][2] == 'o':
+                            if gameboard[2][0] == 'x' or gameboard[2][0] == 'o':
+                                if gameboard[2][1] == 'x' or gameboard[2][1] == 'o':
+                                    if gameboard[2][2] == 'x' or gameboard[2][2] == 'o':
+                                        drawCheck = True
+
 
     
     return drawCheck
@@ -73,6 +81,11 @@ def winConditionX(gameboard):
     return winCheck_x    
 
 
+def determineComputerMove(gameboard):
+    move1 = False
+    move2 = False
+    move3 = False
+    
 
 
 
@@ -147,18 +160,20 @@ def main():
                         player_turn = 'player2'
                 else:
                     print("Choose a valid move as indicated by the gameboard")
-            win_check_x = winConditionX(gameboard)
-            win_check_o = winConditionO(gameboard)
-            draw_checker = drawCondition(gameboard)
-            if win_check_x == True:
-                print("Player 1 wins")
-                running = False
-            if win_check_o == True:
-                print("Player 2 wins")
-                running = False
-            if draw_checker == True:
-                print("It's a draw")
-                running = False
+                win_check_x = winConditionX(gameboard)
+                draw_checker = drawCondition(gameboard)
+                if win_check_x == True:
+                    print("Player 1 wins")
+                    print(gameboard[0])
+                    print(gameboard[1])
+                    print(gameboard[2])
+                    running = False
+                if draw_checker == True:
+                    print("It's a draw")
+                    print(gameboard[0])
+                    print(gameboard[1])
+                    print(gameboard[2])
+                    running = False
             elif player_turn == 'player2':
                 print(gameboard[0])
                 print(gameboard[1])
@@ -220,19 +235,96 @@ def main():
                         player_turn = 'player1'
                 else:
                     print("Choose a valid move as indicated by the gameboard")
-            win_check_x = winConditionX(gameboard)
-            win_check_o = winConditionO(gameboard)
-            draw_checker = drawCondition(gameboard)
-            if win_check_x == True:
-                print("Player 1 wins")
-                running = False
-            if win_check_o == True:
-                print("Player 2 wins")
-                running = False
-            if draw_checker == True:
-                print("It's a draw")
-                running = False
-                
+                win_check_o = winConditionO(gameboard)
+                if win_check_o == True:
+                    print("Player 2 wins")
+                    print(gameboard[0])
+                    print(gameboard[1])
+                    print(gameboard[2])
+                    running = False
+
+    elif human_computer == 'c':
+        running = True
+        player_turn = 'player1' 
+        while running:
+            if player_turn == 'player1':
+                print(gameboard[0])
+                print(gameboard[1])
+                print(gameboard[2])
+                move = input("Player1, what tile[1-9] do you want to convert to an x: ")
+                if move == '1':
+                    if gameboard[0][0] == 'o' or gameboard[0][0] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[0][0] = 'x'
+                        player_turn = 'player2'
+                elif move == '2':
+                    if gameboard[0][1] == 'o' or gameboard[0][1] == 'x':
+                        print("choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[0][1] = 'x'
+                        player_turn = 'player2'
+                elif move == '3':
+                    if gameboard[0][2] == 'o' or gameboard[0][2] == 'x':
+                        print("Choose a valid move as indicated by the gamebaord")
+                    else:
+                        gameboard[0][2] = 'x'
+                        player_turn = 'player2'
+                elif move == '4':
+                    if gameboard[1][0] == 'o' or gameboard[1][0] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[1][0] = 'x'
+                        player_turn = 'player2'
+                elif move == '5':
+                    if gameboard[1][1] == 'o' or gameboard[1][1] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[1][1] = 'x'
+                        player_turn = 'player2'
+                elif move == '6':
+                    if gameboard[1][2] == 'o' or gameboard[1][2] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[1][2] = 'x'
+                        player_turn = 'player2'
+                elif move == '7':
+                    if gameboard[2][0] == 'o' or gameboard[2][0] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[2][0] = 'x'
+                        player_turn = 'player2'
+                elif move == '8':
+                    if gameboard[2][1] == 'o' or gameboard[2][1] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[2][1] = 'x'
+                        player_turn = 'player2'
+                elif move == '9':
+                    if gameboard[2][2] == 'o' or gameboard[2][2] == 'x':
+                        print("Choose a valid move as indicated by the gameboard")
+                    else:
+                        gameboard[2][2] = 'x'
+                        player_turn = 'player2'
+                else:
+                    print("Choose a valid move as indicated by the gameboard")
+                win_check_x = winConditionX(gameboard)
+                draw_checker = drawCondition(gameboard)
+                if win_check_x == True:
+                    print("Player 1 wins")
+                    print(gameboard[0])
+                    print(gameboard[1])
+                    print(gameboard[2])
+                    running = False
+                if draw_checker == True:
+                    print("It's a draw")
+                    print(gameboard[0])
+                    print(gameboard[1])
+                    print(gameboard[2])
+                    running = False
+            elif player_turn == 'player2':
+                move
+
                 
 
 

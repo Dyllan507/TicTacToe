@@ -75,7 +75,6 @@ def winConditionX(gameboard):
 
 
 def determineComputerMove(gameboard):
-    move3 = False
     if gameboard[0][0] == 'x':
         if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[2][2] != 'x':
             move1 = random.randint(2,9)
@@ -112,13 +111,121 @@ def determineComputerMove(gameboard):
         if gameboard[0][1] != 'x' or gameboard[0][2] !='x' or gameboard[1][0] != 'x' or gameboard[1][1] != 'x' or gameboard[1][2] != 'x' or gameboard[2][0] != 'x' or gameboard[2][1] != 'x' or gameboard[0][0] != 'x':
             move1 = random.choice(1,3,4,5,6,7,8,2)
             return move1
-    #checking for win conditions
+    #checking for vertical and horizontal win conditions
     for i in range[len(gameboard)]:
-        if gameboard[i][0] == 'x' and gameboard[i][1] == 'x':
+        if (gameboard[i][0] == 'x' and gameboard[i][1] == 'x') or (gameboard[i][0] == 'o' and gameboard[i][1] == 'o'):
             move2 = gameboard[i][2]
-        if gameboard[i][1] == 'x' and gameboard[i][2] == 'x':
+            if move2 == gameboard[0][2]:
+                move2 = 3
+                return move2
+            elif move2 == gameboard[1][2]:
+                move2 = 6
+                return move2
+            elif move2 == gameboard[2][2]:
+                move2 = 9
+                return move2
+            
+        if (gameboard[i][1] == 'x' and gameboard[i][2] == 'x') or (gameboard[i][1] == 'o' and gameboard[i][2] == 'o'):
             move2 = gameboard[i][0]
-
+            if move2 == [0][0]:
+                move2 = 1
+                return move2
+            elif move2 == [1][0]:
+                move2 = 4
+                return move2
+            elif move2 == [2][0]:
+                move2 = 7
+                return move2
+            
+        if (gameboard[i][0] == 'x' and gameboard[i][2] == 'x') or (gameboard[i][0] == 'o' and gameboard[i][2] == 'o'):
+            move2 = gameboard[i][1]
+            if move2 == gameboard[0][1]:
+                move2 = 2
+                return move2
+            elif move2 == gameboard[1][1]:
+                move2 = 5
+                return move2
+            elif move2 == gameboard[2][1]:
+                move2 = 8
+                return move2
+        if (gameboard[0][i] == 'x' and gameboard[1][i] == 'x') or (gameboard[0][i] == 'o' and gameboard[1][i] == 'o'):
+            move2 = gameboard[2][i]
+            if move2 == gameboard[2][0]:
+                move2 = 7
+                return move2
+            elif move2 == gameboard[2][1]:
+                move2 = 8
+                return move2
+            elif move2 == gameboard[2][2]:
+                move2 = 9
+                return move2
+        if (gameboard[0][i] == 'x' and gameboard[2][i] == 'x') or (gameboard[0][i] == 'o' and gameboard[2][i] == 'o'):
+            move2 = gameboard[1][i]
+            if move2 == gameboard[1][0]:
+                move2 = 4
+                return move2
+            elif move2 == gameboard[1][1]:
+                move2 = 5
+                return move2
+            elif move2 == gameboard[1][2]:
+                move2 = 6
+                return move2
+                       
+        if (gameboard[1][i] == 'x' and gameboard[2][i] == 'x') or (gameboard[1][i] == 'o' and gameboard[2][i] == 'o'):
+            move2 = gameboard[0][i]
+            if move2 == gameboard[0][0]:
+                move2 = 1
+                return move2
+            elif move2 == gameboard[0][1]:
+                move2 = 2
+                return move2
+            elif move2 == gameboard[0][2]:
+                move2 = 3
+                return move2
+    #checking for diagonal win conditions
+    if (gameboard[0][0] == 'x' and gameboard[1][1] == 'x') or (gameboard[0][0] == 'o' and gameboard[1][1] == 'o'):
+        move2 = 9
+        return move2
+    if (gameboard[0][0] == 'x' and gameboard[2][2] == 'x') or (gameboard[0][0] == 'o' and gameboard[2][2] == 'o'):
+        move2 = 5
+        return move2
+    if (gameboard[2][2] == 'x' and gameboard[1][1] == 'x') or (gameboard[2][2] == 'o' and gameboard[1][1] == 'o'):
+        move2 = 1
+        return move2
+    if (gameboard[2][0] == 'x' and gameboard[1][1] == 'x') or (gameboard[2][0] == 'o' and gameboard[1][1] == 'o'):
+        move2 = 3
+        return move2
+    if (gameboard[2][0] == 'x' and gameboard[0][2] == 'x') or (gameboard[2][0] == 'o' and gameboard[0][2] == 'o'):
+        move2 = 5
+        return move2
+    if (gameboard[1][1] == 'x' and gameboard[0][2] == 'x') or (gameboard[1][1] == 'o' and gameboard[0][2] == 'o'):
+        move2 = 7
+        return move2
+    
+    else:
+        running = True
+        move3 = random.randint(1,9)
+        while running:
+            if move3 == 1 and (gameboard[0][0] == 'x' or gameboard[0][0] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 2 and (gameboard[0][1] == 'x' or gameboard[0][1] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 3 and (gameboard[0][2] == 'x' or gameboard[0][2] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 4 and (gameboard[1][0] == 'x' or gameboard[1][0] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 5 and (gameboard[1][1] == 'x' or gameboard[1][1] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 6 and (gameboard[1][2] == 'x' or gameboard[1][2] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 7 and (gameboard[2][0] == 'x' or gameboard[2][0] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 8 and (gameboard[2][1] == 'x' or gameboard[2][1] == 'o'):
+                move3 = random.randint(1,9)
+            elif move3 == 2 and (gameboard[2][2] == 'x' or gameboard[2][2] == 'o'):
+                move3 = random.randint(1,9)
+            else:
+                return move3
 
 def main():
     gameboard = [
@@ -354,7 +461,35 @@ def main():
                     print(gameboard[2])
                     running = False
             elif player_turn == 'player2':
-                move
+                move = determineComputerMove(gameboard)
+                if move == 1:
+                    gameboard[0][0] == 'o'
+                    player_turn = 'player1'
+                elif move == 2:
+                    gameboard[0][1] == 'o'
+                    player_turn = 'player1'
+                elif move == 3:
+                    gameboard[0][2] == 'o'
+                    player_turn = 'player1'
+                elif move == 4:
+                    gameboard[1][0] == 'o'
+                    player_turn = 'player1'
+                elif move == 5:
+                    gameboard[1][1] == 'o'
+                    player_turn = 'player1'
+                elif move == 6:
+                    gameboard[1][2] == 'o'
+                    player_turn = 'player1'
+                elif move == 7:
+                    gameboard[2][0] == 'o'
+                    player_turn = 'player1'
+                elif move == 8:
+                    gameboard[2][1] == 'o'
+                    player_turn = 'player1'
+                elif move == 9:
+                    gameboard[2][2] == 'o'
+                    player_turn = 'player1'
+                
 
                 
 
